@@ -1,1 +1,2 @@
-# imgur-images-app
+# imgur-application
+a imgur application

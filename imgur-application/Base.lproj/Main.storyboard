@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hpn-s9-QLU">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Imgur Images-->
+        <scene sceneID="HLg-nF-QcR">
+            <objects>
+                <collectionViewController storyboardIdentifier="CollectionViewID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Dz9-ob-7Jl" customClass="CollectionViewController" customModule="imgur_application" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="gVo-6Z-tf9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LlG-pY-2Xq">
+                            <size key="itemSize" width="120" height="120"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="12" minY="10" maxX="12" maxY="5"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="buF-rK-ntA" customClass="PhotoCell" customModule="imgur_application" customModuleProvider="target">
+                                <rect key="frame" x="12" y="10" width="120" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Xv-RL-hti">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="1Xv-RL-hti" secondAttribute="trailing" id="7gX-gS-Z4m"/>
+                                    <constraint firstAttribute="bottom" secondItem="1Xv-RL-hti" secondAttribute="bottom" id="ihn-qU-cTs"/>
+                                    <constraint firstItem="1Xv-RL-hti" firstAttribute="leading" secondItem="buF-rK-ntA" secondAttribute="leading" id="uNL-Dw-Uq7"/>
+                                    <constraint firstItem="1Xv-RL-hti" firstAttribute="top" secondItem="buF-rK-ntA" secondAttribute="top" id="xvk-fP-J2N"/>
+                                </constraints>
+                                <size key="customSize" width="120" height="120"/>
+                                <connections>
+                                    <outlet property="imageView" destination="1Xv-RL-hti" id="2ul-H5-n5T"/>
+                                    <segue destination="bqt-8d-ogC" kind="show" identifier="showDeatil" id="0Bv-SA-gck"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Dz9-ob-7Jl" id="H62-Jr-Pza"/>
+                            <outlet property="delegate" destination="Dz9-ob-7Jl" id="sJK-AT-v3f"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Imgur Images" id="9o7-pK-quI">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="SxX-d3-Bn1">
+                            <connections>
+                                <action selector="addPhotosFromLib:" destination="Dz9-ob-7Jl" id="7cc-6s-9Xd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HG6-cz-zOf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1716" y="514"/>
+        </scene>
+        <!--Photo Detail View Controller-->
+        <scene sceneID="i2E-xn-pBA">
+            <objects>
+                <viewController storyboardIdentifier="photoDetailViewController" id="bqt-8d-ogC" customClass="PhotoDetailViewController" customModule="imgur_application" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XxR-vL-gw1"/>
+                        <viewControllerLayoutGuide type="bottom" id="jiD-Vx-VaY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4EJ-nr-fcW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iub-L3-zxe">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem systemItem="trash" id="975-yx-RXJ">
+                                        <connections>
+                                            <action selector="deletePhoto:" destination="bqt-8d-ogC" id="Rym-GZ-qjQ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xuF-Og-qgJ">
+                                <rect key="frame" x="62" y="98" width="250" height="250"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="G5J-LG-NIF"/>
+                                    <constraint firstAttribute="height" constant="250" id="QO2-GL-nRh"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="xuF-Og-qgJ" firstAttribute="top" secondItem="XxR-vL-gw1" secondAttribute="bottom" constant="34" id="S3e-Ef-BAJ"/>
+                            <constraint firstItem="xuF-Og-qgJ" firstAttribute="centerX" secondItem="4EJ-nr-fcW" secondAttribute="centerX" id="Wkz-Cp-ayb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="photoImageView" destination="xuF-Og-qgJ" id="IcW-R6-pyU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IoV-Ex-K9p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2418.75" y="512.32394366197184"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="ugk-Ve-eDm">
+            <objects>
+                <viewController storyboardIdentifier="MainViewID" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hpn-s9-QLU" userLabel="Login View Controller" customClass="ViewController" customModule="imgur_application" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vgh-cP-Fdw"/>
+                        <viewControllerLayoutGuide type="bottom" id="WT2-vp-nmJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4wz-CU-222">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7E-Oh-JtP">
+                                <rect key="frame" x="106" y="317" width="164" height="33"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <state key="normal" title="Sign In to imgur.com">
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="signInEmbedded:" destination="hpn-s9-QLU" eventType="touchUpInside" id="PNf-hW-bBQ"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JIx-wV-nA3">
+                                <rect key="frame" x="133" y="470" width="109" height="33"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <state key="normal" title="Forget Tokens">
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="forgetTokens:" destination="hpn-s9-QLU" eventType="touchUpInside" id="4hE-9N-sc7"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgur" translatesAutoresizingMaskIntoConstraints="NO" id="JVg-O8-Op1">
+                                <rect key="frame" x="124" y="139" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="JGL-aA-OkQ"/>
+                                    <constraint firstAttribute="height" constant="128" id="kvP-GR-X9W"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="JIx-wV-nA3" secondAttribute="centerX" id="WPV-WV-47Z"/>
+                            <constraint firstAttribute="centerX" secondItem="JVg-O8-Op1" secondAttribute="centerX" id="fMn-dK-wyM"/>
+                            <constraint firstAttribute="centerY" secondItem="B7E-Oh-JtP" secondAttribute="centerY" id="q3Z-xP-dxZ"/>
+                            <constraint firstItem="WT2-vp-nmJ" firstAttribute="top" secondItem="JIx-wV-nA3" secondAttribute="bottom" constant="164" id="tIN-17-k5k"/>
+                            <constraint firstAttribute="centerX" secondItem="B7E-Oh-JtP" secondAttribute="centerX" id="uNh-xR-5xt"/>
+                            <constraint firstItem="B7E-Oh-JtP" firstAttribute="top" secondItem="JVg-O8-Op1" secondAttribute="bottom" constant="50" id="uQe-I0-yck"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="YAV-Ul-KkA"/>
+                    <connections>
+                        <outlet property="forgetButton" destination="JIx-wV-nA3" id="ySC-NN-gNm"/>
+                        <outlet property="imageView" destination="JVg-O8-Op1" id="mrN-za-dRA"/>
+                        <outlet property="signInEmbeddedButton" destination="B7E-Oh-JtP" id="rW2-44-xLb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bq1-bs-Pbe" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="207" y="512"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9X9-Lr-CNH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2FI-vJ-NfJ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nMV-Ou-pyt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Dz9-ob-7Jl" kind="show" identifier="imagesSegue" id="eY8-Z3-j16"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E8u-mN-PIX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="953" y="513"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="imgur" width="150" height="150"/>
+    </resources>
+</document>
